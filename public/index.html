@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Zayn & Nala</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@700&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Preloader -->
@@ -19,13 +19,11 @@
         </div>
     </div>
     
-    <!-- Audio Player -->
-    <div class="audio-container" id="audioControl">
-        <i class="fas fa-music"></i>
-        <audio id="weddingAudio" loop>
-            <source src="https://files.catbox.moe/ifgxbi.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
     
     <!-- Navigation -->
     <div class="nav-container" id="navContainer">
@@ -46,18 +44,6 @@
         </nav>
     </div>
     
-    <!-- Floating Hearts -->
-    <div class="floating-hearts" id="floatingHearts"></div>
-    
-    <!-- Confetti Container -->
-    <div class="confetti-container" id="confettiContainer"></div>
-    
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">Pesan berhasil dikirim!</span>
-    </div>
-    
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
@@ -67,9 +53,7 @@
             <p class="guest-name">Kepada Yth Bapak/Ibu/Saudara/i</p>
             <button class="open-invitation" id="openInvitation">💌 Buka Undangan</button>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        <!-- Scroll Indicator dihilangkan -->
     </section>
     
     <!-- Section Divider -->
@@ -88,7 +72,7 @@
         <div class="couple-container">
             <div class="couple-card">
                 <div class="couple-image">
-                    <img src="https://files.catbox.moe/mwondu.jpg" alt="Pengantin Wanita">
+                    <img src="assets/images/thebride.jpeg" alt="Pengantin Wanita">
                 </div>
                 <div class="couple-info">
                     <h3 class="couple-name">Nala</h3>
@@ -103,7 +87,7 @@
             </div>
             <div class="couple-card">
                 <div class="couple-image">
-                    <img src="https://files.catbox.moe/2swpo5.jpg" alt="Pengantin Pria">
+                    <img src="assets/images/thegroom.jpeg" alt="Pengantin Pria">
                 </div>
                 <div class="couple-info">
                     <h3 class="couple-name">Zayn</h3>
@@ -154,7 +138,7 @@
         </div>
         <div class="gallery-container">
             <div class="gallery-item">
-                <img src="https://files.catbox.moe/k4qith.jpg" alt="Gallery Photo 1" class="gallery-image">
+                <img src="assets/images/album1.jpeg" alt="Gallery Photo 1" class="gallery-image">
                 <div class="gallery-overlay">
                     <div class="gallery-icon">
                         <i class="fas fa-expand"></i>
@@ -162,7 +146,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://files.catbox.moe/j8ko3d.jpg" alt="Gallery Photo 2" class="gallery-image">
+                <img src="assets/images/album2.jpeg" alt="Gallery Photo 2" class="gallery-image">
                 <div class="gallery-overlay">
                     <div class="gallery-icon">
                         <i class="fas fa-expand"></i>
@@ -170,7 +154,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://files.catbox.moe/b30d9s.jpg" alt="Gallery Photo 3" class="gallery-image">
+                <img src="assets/images/album3.jpeg" alt="Gallery Photo 3" class="gallery-image">
                 <div class="gallery-overlay">
                     <div class="gallery-icon">
                         <i class="fas fa-expand"></i>
@@ -178,7 +162,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://files.catbox.moe/xdkcr7.jpg" alt="Gallery Photo 4" class="gallery-image">
+                <img src="assets/images/album4.jpeg" alt="Gallery Photo 4" class="gallery-image">
                 <div class="gallery-overlay">
                     <div class="gallery-icon">
                         <i class="fas fa-expand"></i>
@@ -203,7 +187,7 @@
         <p class="section-subtitle">Tempat Pernikahan</p>
         <div class="location-container">
             <div class="location-card">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEuMSJTIDEwNsKwNDknMTAuMyJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEu1JTIDEwNsKwNDknMTAuMiJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" 
                         class="location-map" allowfullscreen="" loading="lazy"></iframe>
                 <div class="location-info">
                     <h3 class="location-title">Masjid Al-Barakah</h3>
@@ -218,7 +202,7 @@
                 </div>
             </div>
             <div class="location-card">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEuMSJTIDEwNsKwNDknMTAuMyJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTEnNDEu1JT IDEwNsKwNDknMTAuMiJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" 
                         class="location-map" allowfullscreen="" loading="lazy"></iframe>
                 <div class="location-info">
                     <h3 class="location-title">Ballroom Grand Hotel</h3>
@@ -331,8 +315,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="message">Pesan/Ucapan</label>
-                <textarea id="message" class="form-control" rows="4" placeholder="Tulis ucapan untuk mempelai..."></textarea>
+                <label for="message">Ucapan</label>
+                <textarea id="message" class="form-control" rows="4" placeholder="Tulis ucapan untuk mempelai..." required></textarea>
             </div>
             <button type="submit" class="submit-btn">Kirim Konfirmasi</button>
         </form>
@@ -340,49 +324,67 @@
     
     <!-- Dashboard Section -->
     <section class="dashboard-section" id="dashboard">
-        <h2 class="section-title">Daftar Konfirmasi</h2>
-        <p class="section-subtitle">Ucapan dari Tamu Undangan</p>
+        <h2 class="section-title">Ucapan dari Tamu Undangan</h2>
+        <p class="section-subtitle">Daftar Ucapan</p>
         <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h3>Yang Akan Hadir</h3>
+            <div class="dashboard-content">
+                <div class="responses-container" id="responsesContainer">
+                    <p class="no-responses">Belum ada ucapan</p>
+                </div>
             </div>
-            <div class="responses-list" id="attendingList">
-                <!-- Will be populated by JavaScript -->
-            </div>
-            <div class="dashboard-header">
-                <h3>Yang Tidak Hadir</h3>
-            </div>
-            <div class="responses-list" id="notAttendingList">
-                <!-- Will be populated by JavaScript -->
-            </div>
-            <button class="view-all-btn" id="viewAllBtn">Lihat Semua</button>
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer class="footer">
-        <h2 class="footer-title">Zayn & Nala</h2>
-        <p class="footer-text">Terima kasih telah menjadi bagian dari perjalanan cinta kami. Kehadiran dan doa Bapak/Ibu/Saudara/i sangat berarti bagi kami.</p>
-        <div class="footer-social">
-            <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="footer-social-icon"><i class="fab fa-youtube"></i></a>
-        </div>
-        <div class="footer-love">
-            <i class="fas fa-heart"></i>
-        </div>
-        <p class="footer-copyright">© 2023 Wedding Invitation - Zayn & Nala | Made with <i class="fas fa-heart"></i> for you</p>
-    </footer>
-    
-    <!-- Image Modal -->
-    <div class="modal" id="imageModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <img src="" alt="" class="modal-image" id="modalImage">
-        </div>
+    <!-- Audio Player di bagian bawah -->
+    <div class="audio-container-bottom" id="audioControl">
+        <i class="fas fa-music"></i>
+        <audio id="weddingAudio" loop>
+            <source src="https://files.catbox.moe/ifgxbi.mp3" type="audio/mpeg">
+        </audio>
     </div>
     
-    <script src="/script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Zayn & Nala</h3>
+                <p class="footer-text">Terima kasih telah menjadi bagian dari perjalanan cinta kami. Kehadiran dan doa Bapak/Ibu/Saudara/i sangat berarti bagi kami.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Kontak</h3>
+                <p class="footer-text">
+                    <i class="fas fa-phone"></i> +62 812-3456-7890 (Zayn)<br>
+                    <i class="fas fa-phone"></i> +62 812-3456-7891 (Nala)<br>
+                    <i class="fas fa-envelope"></i> zayndannala@wedding.com
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Ikuti Kami</h3>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Wedding of Zayn & Nala. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification (tetap ada tapi tidak muncul otomatis) -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Pesan berhasil dikirim!</span>
+    </div>
+    
+    <!-- Modal for Image Gallery -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>

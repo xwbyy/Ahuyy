@@ -1,52 +1,53 @@
 // Google Sheets configuration
 export const GOOGLE_SHEETS_CONFIG = {
-    spreadsheetId: '1RnoMuiqAh-87-Be7n7pAJGwaBoMgwYBhdzt_pA7gLPk',
-    rsvpRange: 'nikah', // Sheet name
+    spreadsheetId: '15wL6CxVSo5cuxsQS9r3wcWQq6ySstPoGZR04paChoZ8',
+    rsvpRange: 'dataku!A:G',
     serviceAccount: {
         type: "service_account",
-        project_id: "daniel136",
-        private_key_id: "96b25ab3b1d870db38cd9d5d17ab93a38b423eee",
-        private_key: `-----BEGIN PRIVATE KEY-----
-MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrMnVriT5nJWyO
-TEP83ZZ320cPc+gjpCktB2m5C7nckfbvvPGd0qjY5hEXztB98rzfKNKZD3aFI0y4
-BwRo4w1IzFUSkymfrO1JL4UeOUe+nQv02BL7UyEXD7E4/fLGSEPRfbo3ScsCBMo2
-oIXzvYGIZJfB5I0WXgIODtALXaerytL1ngOEDaurIsuSqdFJ8T40Te+20Tymrygu
-Ht7ymAnxKuin9rcVN5AfVBhywVDX+ERMipTCdYT+YOZX5DOKYu+96vB7uyTvPKPd
-58EwtwPRGSqduu7EwVUJhIvuUQaveHppWEW7jTY1cO2603Yl1BefoNIt1dBb7LbF
-49qdOFE7AgMBAAECggEAEAxVXITLkEC+WeKFVw1wnwCzuxua7chkQb/ZpcqXHDmk
-o9ma7rgCMv7yKECvY7cfBG5fu5BrBFUISpIB1FFAfAwHh4u7EahUwBEP0gL9mj0/
-ky60LNIgnnhOnTCVEwhQLzGxhKBKwwAu8or+s5gWrfH8FeV2Ylvipm22C/K2FpDv
-64wyKeFT5sFmAdoZORu0Y/7NRQ9Eyhk4fOg8N03ktAu/WOW1YSt8KkQAQIHd6YIg
-fyKYsUe9k7DiHT1DZ7QwPAnfxnB2bWkxnRlf/8/Mor5rs7K8iHarFdv3nPjiTVH/
-YDp+q8SECiyiltYfvdI0D97nFOqtOK7OmtA70LmgwQKBgQDkK0VJQl/IpPgZwrhm
-36eXiwJ6t2T4ThJ3B+5RxBZ7h9agU3nTUfBlD/OsBg2bu3q36Szv3YOTxvTepR8Z
-5oMdpV2LnHfwymKirpk30sBEnDeBo2pVCHM+XjcbcbexSgRd1aAqHFaTkRh59EnC
-sPVOFyBZP2CApCckSlzeQs5QQQKBgQDAFDOx5ga8ic+ScfOpqWZnRddVFZGmvBP9
-YRS7SbZKGI3Kqv4Y1a5UTY/yj2h/EgeUi2gm86L2bZhAB/guf1NlKTHqSV2Lcq+q
-tQwcRF2x6XonZljXcMpeEdRY7MEIoazWVS2EeUPaTiTKjfuU/3zuEyO81yIR1/tF
-3frCuadCewKBgQDeoiYSDJS/h9CZ+jjKEFNL+BSsPwRjkHJN+MwetnGliW7vs2P8
-wUgKpJ0D7kga+70LdJcnWYJIkGpgUMffEuA+7hsv3bXemuvRhwHzyU1X5QH4Gcbo
-P72LTo0A114AvJM0J/0G+e20QXCblrTeJqLE1qX2z3NPMl0K+RBSwubiwQKBgCYB
-GUVetQCC5+4a29I68UcHu5ZbISlzVyUwGzD/YbEBcLSj5oi1ZrvJaOzeURerUpKi
-jqX+WMUXZCNvMDzK9o4ye2zWvUqFE5rcHZxOLpewEXpQNs3RxEiekHxTw9HYY2E5
-Ezt93t4HziHBvAB8GJTmdpC7pEMRj+cAB8iVgTGXAoGAPklvxGp56KQdxvEHRk+4
-QBX+g+Hw+tNVqzKVxPPCpOve/2ScOiVr/3PGWMNd2HeIzIWHVfZXWyETkwWiqmtL
-378u2pFNh6FaxZFbFObZjyPKYr/aWSd8fmy0v/NeNDz2+oL4n1D1DNXu6T2D2kQy
-SNW2o4UK3JmkBY25rIKqfC0=
+        project_id: "studious-nature-470917-r6",
+        private_key_id: "feef8814243d8b3221949dd2b5ac4f167a9f5ce4",
+        private_key: process.env.GOOGLE_PRIVATE_KEY || `-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCzaGuPstxwSsvQ
+v54kCqSAzJ0CvC7dnj5F4Qs337O9ZrEhSFzLUw2gYtVsfmUPwp3ScAuPpMoSq+O5
+XwxNuHR99BOxfrchtUmGbBNh0pCx02EemHbmCOZU9F59oXOqCCZaDwf0xp341/Qt
+vG1+uY2TaRXRaWr9X7A0Oi5sZgGWI6BODPKcdiex6Zdl2exXdFeAOSl0/XE5ImZZ
+EHvb2mdB2DZrd8QAkwWCAHRIAnpaxhnai5ur5N4FID8GqB29taFbUAQe8lL4E55v
+dvZV8zr3CMdIbZGmtiS6gzdQBi3KNTjphg3I3qRXuEyjZ+3P9XUEhIq3h5KqiPMy
+x5kWB0NfAgMBAAECggEAAjR+2fHLVs/8iFDKm0vMMM8TAPUaKFwpDMfS0Pl9Zo8M
+D0op5c/cA4QjdmVpTZPJR8xbwAS4/RjCwEUETDI/sEqfMVfK3W2yfSX36QRjBeSA
+tZUPJQ2n8xRb0vR4jPbzrbiwktgcGfJhjGxb9ipGrLCmdX/zsjCKZGHwryFj1JoP
+LkckHNPVyCFKU+PTf31Wk1U23BIaKnbpNkKawYqNtZTySxNsO5SjK42pnQxqQ7nA
++62UNAudkKc8RdobQVhK4NozIzn0TuHBMiu037VmdiFXbHfXbY5fCXqOvUxJjQgO
+8u9lu3trgsa1XXIaOrqZhmYycnYXqt7FPVa9+Z3I1QKBgQD0wgsQ7gWHWHyIlPAC
+zJM8ZJ/yR/XP3bLGzblrV4uGY0mvJymKLqNdiaf8FmaquOyYBt+scNnBKbZzD7yU
+6MKsKtL54Jm6eBrzMBIxIYQPRYwC1rNtLG6t/mpr0aNd+zImWSeFEtJob7piGcUy
+B1xbQVz4KVpCTch2QdfmKkjhLQKBgQC7pfdFAjNpiY1UXDoJip0SoZ/UFgAWIgvF
+8g18NbWcp68k5V5+yOtx4YQdtVV5darhgsSaVaN4TWnR+ajrDViWbztqFpcJDvfZ
+g2/hMxNtT/sU6XWHCGgCnvyZUyeWV3qTwf9Lke1ofzO9rT3Fh9FunokIGLtWGEhR
+rv7asVeWOwKBgQDjvi632RKR5rcyC4vsvth9yI+/zE+g1IRGUiSnCfXM3VQxw3n2
+lwDxx2Xkvh9X2exkZXj5JqSoBR08oTbzREXoF4zqb5/7j0hcYq16w9nyr97gwVCB
+VGfERMhXfODLUTJP1oNcYrAf915xa9M+gvTgAMj2LNxMd74As7Gl/FCGHQKBgC3n
+S7X18929aHVamlf7MLF+GDspppvDeF3T+LiJ6wOHgbDk61jYjcAuCsO5uE8eGc9Q
+zgdzK6oiReC30jqt6R3j2AT7wbbVkowDOzs742S6TBGxiq6dv9PkUKaxUN3WSIYc
+zvcNm6YUd/POjW3k67bD0YHJiwpkpkxVIsMc3vBBAoGAM81NwpEMDgS0VZBqRIYD
+xPSc5maLfPixAXR9BUsi0byM0iXQaFXftw8ewwsb0+xqCNt4DvpUHbPvlsXCKBVk
+LHUrgUnYrLUBlQKedRQIaDZGR3pgcLsHPDa7wGZydyWCx2J1Lt5sofemWsBe8ibg
+TfRduQSwPtlCUmwcBC7gj8Q=
 -----END PRIVATE KEY-----`,
-        client_email: "daniel166@daniel136.iam.gserviceaccount.com",
-        client_id: "117950866995283381514",
+        client_email: "xwbygood@studious-nature-470917-r6.iam.gserviceaccount.com",
+        client_id: "102190198674035043299",
         auth_uri: "https://accounts.google.com/o/oauth2/auth",
         token_uri: "https://oauth2.googleapis.com/token",
         auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-        client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/daniel166%40daniel136.iam.gserviceaccount.com"
+        client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/xwbygood%40studious-nature-470917-r6.iam.gserviceaccount.com",
+        universe_domain: "googleapis.com"
     }
 };
 
 // Wedding configuration
 export const WEDDING_CONFIG = {
     coupleNames: "Zayn & Nala",
-    weddingDate: "July 15, 2023",
+    weddingDate: "July 15, 2026",
     locations: {
         ceremony: {
             name: "Masjid Al-Barakah",
