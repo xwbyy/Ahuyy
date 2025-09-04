@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ]
+  ],
+  "env": {
+    "GOOGLE_PRIVATE_KEY": "@google_private_key"
+  }
 }
