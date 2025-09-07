@@ -352,20 +352,25 @@ function displayMessages(messages) {
         // Format date properly
         let displayDate = 'Tanggal tidak tersedia';
         if (msg.timestamp) {
-            try {
-                const dateObj = new Date(msg.timestamp);
-                if (!isNaN(dateObj.getTime())) {
-                    displayDate = dateObj.toLocaleDateString('id-ID', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-                }
-            } catch (e) {
-                // If timestamp parsing fails, use as is
+            // If timestamp is already a formatted string from server, use it directly
+            if (typeof msg.timestamp === 'string' && msg.timestamp.trim() !== '') {
                 displayDate = msg.timestamp;
+            } else {
+                try {
+                    const dateObj = new Date(msg.timestamp);
+                    if (!isNaN(dateObj.getTime())) {
+                        displayDate = dateObj.toLocaleDateString('id-ID', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }
+                } catch (e) {
+                    // If timestamp parsing fails, use as is
+                    displayDate = msg.timestamp;
+                }
             }
         }
         
