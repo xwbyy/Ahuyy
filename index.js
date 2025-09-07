@@ -16,7 +16,7 @@ if (!fs.existsSync(configPath)) {
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -114,6 +114,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(port, () => console.log(`🚀 Server jalan di port ${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`🚀 Server jalan di port ${port}`));
 
 setInterval(() => { if (!isSheetsInitialized) initializeSheets(); }, 30000);
