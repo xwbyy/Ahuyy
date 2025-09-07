@@ -1,6 +1,7 @@
 // Initialize variables
 let audioPlaying = false;
 const weddingAudio = document.getElementById('weddingAudio');
+const messages = [];
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
@@ -163,11 +164,11 @@ function initializeGallery() {
     }
 }
 
-// RSVP Form - UPDATED FOR GOOGLE SHEETS
+// RSVP Form
 function initializeRSVPForm() {
     const rsvpForm = document.getElementById('rsvpForm');
     
-    rsvpForm.addEventListener('submit', async function(e) {
+    rsvpForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const formData = new FormData(rsvpForm);
@@ -175,37 +176,32 @@ function initializeRSVPForm() {
         const attendance = formData.get('attendance');
         const message = formData.get('message');
         
-        try {
-            // Send data to server
-            const response = await fetch('/api/rsvp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: name,
-                    attendance: attendance,
-                    message: message
-                })
-            });
-            
-            if (response.ok) {
-                // Show success toast
-                showToast('Konfirmasi kehadiran Anda telah berhasil dikirim!');
-                
-                // Reset form
-                rsvpForm.reset();
-                
-                // Reload messages to show the new one
-                loadMessages();
-            } else {
-                const errorData = await response.json();
-                showToast(errorData.error || 'Terjadi kesalahan. Silakan coba lagi.');
-            }
-        } catch (error) {
-            console.error('Error submitting RSVP:', error);
-            showToast('Terjadi kesalahan jaringan. Silakan coba lagi.');
-        }
+        // Create message object
+        const newMessage = {
+            name: name,
+            attendance: attendance,
+            message: message,
+            date: new Date().toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            })
+        };
+        
+        // Add to messages array
+        messages.push(newMessage);
+        
+        // Save to localStorage
+        saveMessages();
+        
+        // Update guestbook display
+        displayMessages();
+        
+        // Show success toast
+        showToast('Konfirmasi kehadiran Anda telah berhasil dikirim!');
+        
+        // Reset form
+        rsvpForm.reset();
     });
 }
 
@@ -259,12 +255,15 @@ function initializeOpenInvitation() {
     });
 }
 
-// Guestbook messages - UPDATED FOR GOOGLE SHEETS
+// Guestbook messages
 function initializeMessages() {
     const refreshBtn = document.getElementById('refreshMessages');
     
-    // Load messages from server
+    // Load messages from localStorage
     loadMessages();
+    
+    // Display messages
+    displayMessages();
     
     // Refresh messages button
     refreshBtn.addEventListener('click', function() {
@@ -278,52 +277,44 @@ function initializeMessages() {
         
         // Reload messages
         loadMessages();
+        displayMessages();
         
         showToast('Pesan diperbarui');
     });
 }
 
-// Load messages from server - UPDATED FOR GOOGLE SHEETS
-async function loadMessages() {
-    const messagesContainer = document.getElementById('messagesContainer');
-    
-    try {
-        // Show loading state
-        messagesContainer.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Memuat pesan...</p>
-            </div>
-        `;
-        
-        const response = await fetch('/api/responses');
-        
-        if (response.ok) {
-            const messages = await response.json();
-            displayMessages(messages);
-        } else {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Gagal memuat pesan');
+// Load messages from localStorage
+function loadMessages() {
+    const storedMessages = localStorage.getItem('weddingMessages');
+    if (storedMessages) {
+        try {
+            const parsedMessages = JSON.parse(storedMessages);
+            // Clear current messages and replace with stored ones
+            messages.length = 0;
+            parsedMessages.forEach(msg => messages.push(msg));
+        } catch (error) {
+            console.error('Error parsing messages:', error);
         }
-    } catch (error) {
-        console.error('Error loading messages:', error);
-        messagesContainer.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Gagal memuat pesan. Silakan refresh halaman.</p>
-            </div>
-        `;
     }
 }
 
-// Display messages in the guestbook - UPDATED FOR GOOGLE SHEETS
-function displayMessages(messages) {
+// Save messages to localStorage
+function saveMessages() {
+    try {
+        localStorage.setItem('weddingMessages', JSON.stringify(messages));
+    } catch (error) {
+        console.error('Error saving messages:', error);
+    }
+}
+
+// Display messages in the guestbook
+function displayMessages() {
     const messagesContainer = document.getElementById('messagesContainer');
     
     // Clear the container
     messagesContainer.innerHTML = '';
     
-    if (!messages || messages.length === 0) {
+    if (messages.length === 0) {
         // Show empty state
         messagesContainer.innerHTML = `
             <div class="empty-state">
@@ -341,56 +332,22 @@ function displayMessages(messages) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message-card');
         
-        const attendanceIcon = msg.attendance === 'Akan Hadir' || msg.attendance === 'yes'
+        const attendanceIcon = msg.attendance === 'yes' 
             ? '<i class="fas fa-check-circle" style="color: #28a745;"></i>' 
             : '<i class="fas fa-times-circle" style="color: #dc3545;"></i>';
-            
-        const attendanceText = msg.attendance === 'Akan Hadir' || msg.attendance === 'yes'
-            ? 'Akan Hadir' 
-            : 'Tidak Hadir';
-        
-        // Format date properly
-        let displayDate = 'Tanggal tidak tersedia';
-        if (msg.timestamp) {
-            try {
-                const dateObj = new Date(msg.timestamp);
-                if (!isNaN(dateObj.getTime())) {
-                    displayDate = dateObj.toLocaleDateString('id-ID', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-                }
-            } catch (e) {
-                // If timestamp parsing fails, use as is
-                displayDate = msg.timestamp;
-            }
-        }
         
         messageElement.innerHTML = `
             <div class="message-header">
-                <span class="message-name">${escapeHtml(msg.name || 'Tamu')}</span>
-                <span class="message-date">${displayDate}</span>
-            </div>
-            <div class="message-attendance ${attendanceText === 'Akan Hadir' ? 'attending' : 'not-attending'}">
-                ${attendanceIcon} ${attendanceText}
+                <span class="message-name">${msg.name}</span>
+                <span class="message-date">${msg.date}</span>
             </div>
             <div class="message-text">
-                ${msg.message ? escapeHtml(msg.message) : 'Tidak ada pesan tambahan'}
+                ${attendanceIcon} ${msg.message || 'Tidak ada pesan tambahan'}
             </div>
         `;
         
         messagesContainer.appendChild(messageElement);
     });
-}
-
-// Utility function to escape HTML
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
 }
 
 // Toast notification
@@ -404,4 +361,30 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
+}
+
+// Google Sheets integration (for future use)
+function submitToGoogleSheets(formData) {
+    // This is a placeholder for Google Sheets integration
+    // You would need to set up a Google Apps Script to handle form submissions
+    console.log('Submitting to Google Sheets:', formData);
+    
+    // Example fetch request (would need to be configured with your Google Apps Script URL)
+    /*
+    fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(() => {
+        showToast('Konfirmasi kehadiran Anda telah berhasil dikirim!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showToast('Terjadi kesalahan. Silakan coba lagi.');
+    });
+    */
 }
